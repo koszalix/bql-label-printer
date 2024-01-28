@@ -51,7 +51,15 @@ def do_print():
     """
     im = Image.open(request.files["data"])
     qlr = BrotherQLRaster(MODEL)
-    create_label(qlr, im, request.form["size"], threshold=70, cut=False, rotate=0)
+    print(request.form)
+    create_label(
+        qlr,
+        im,
+        request.form["size"],
+        threshold=70,
+        cut=bool(request.form["cut"]),
+        rotate=int(request.form["rotate"]),
+    )
 
     # noinspection PyCallingNonCallable
     be = BACKEND_CLASS(BACKEND_STRING_DESCR)
