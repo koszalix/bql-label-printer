@@ -24,6 +24,20 @@ if (labelSelect) {
                     wrapper.style.transform = '';
                 }
 
+              if (wrapper.firstChild.hasAttribute('cut')) {
+                  wrapper.style.cut = wrapper.firstChild.getAttribute('cut');
+              }else {
+                wrapper.style.cut = "False";
+              }
+
+              if (wrapper.firstChild.hasAttribute('rotation')){
+                wrapper.style.rotation = wrapper.firstChild.getAttribute('rotation');
+              }
+              else{
+                wrapper.style.rotation = "0";
+              }
+
+
                 buildForm();
                 buildQR();
             })
@@ -102,6 +116,8 @@ button.onclick = function () {
             const fd = new FormData();
             fd.append('data', blob);
             fd.append('size', getSize());
+            fd.append('rotate', wrapper.style.rotation);
+            fd.append('cut', wrapper.style.cut);
 
             return fetch('/print', {
                 method: 'POST',
