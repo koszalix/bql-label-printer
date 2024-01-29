@@ -9,6 +9,7 @@ from glob import glob
 from os.path import basename
 
 from PIL import Image
+import yaml
 from brother_ql import BrotherQLRaster, create_label
 from brother_ql.backends import backend_factory, guess_backend
 from brother_ql.devicedependent import models, label_type_specs, label_sizes
@@ -109,13 +110,28 @@ def main():
         choices=models,
         help="The model of your printer (default: QL-500)",
     )
+    parser.add_argument("--config-file", default="", help="path to config file")
     parser.add_argument(
         "printer",
         help="String descriptor for the printer to use (like tcp://192.168.0.23:9100 or "
         "file:///dev/usb/lp0)",
+        nargs="*",
     )
+
     args = parser.parse_args()
 
+    if args.config_file:
+        with open(args.config_file, "r") as file:
+            config = yaml.safe_load(file)
+            try:
+                args.host = config["server"]["host"]
+                args.port = config["server"]["port"]
+                args.debug = config["server"]["debug"]
+                args.model = config["backend"]["model"]
+                args.printer = config["backend"]["printer"]
+            except KeyError:
+                print("Config error")
+                exit(-3)
     DEBUG = args.debug
     MODEL = args.model
 
