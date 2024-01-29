@@ -36,6 +36,19 @@ To enable auto cut for label set `cut` to `True` in  main `<div>` of label defin
 
 To enable rotation set `rotation` to specific angle (range from 0 to 360) in main `<div>` of label definition.
 
+## Using config file 
+Instead of using parameter provided by command line, parameters can be provided from config file. 
+
+## Installation 
+
+To install the `bql-label-printer` use following commands:
+```bash
+chmod +x install.sh 
+./install.sh
+```
+
+
+
 ## Feedback
 
 Please feel free to submit feedback in the form of pull requests.
