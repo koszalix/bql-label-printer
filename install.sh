@@ -4,7 +4,7 @@ CWD=$(pwd)
 
 sudo adduser $USER lp
 sudo apt install python3
-sudo apt install pythn3.11-venv
+sudo apt install python3.11-venv
 
 python3 -m venv .env 
 source .env/bin/activate

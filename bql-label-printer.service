@@ -6,7 +6,7 @@ After=syslog.target network.target
 Type=simple
 User=user
 WorkingDirectory=pwd
-ExecStart=pwd/bin/python app.py --config-file pwd/bql.yml  
+ExecStart=pwd/.env/bin/python app.py --config-file pwd/bql.yml  
 Restart=on-abort
 
 [Install]
