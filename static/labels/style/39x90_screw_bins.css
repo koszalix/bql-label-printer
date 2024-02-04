@@ -1,0 +1,31 @@
+.container {
+ display: grid;
+ align-items: left; 
+ grid-template-columns: 150px 450px 300px;
+ column-gap: 5px;
+}
+
+p {
+    font-family:  "Courier New", monospace;
+    white-space: nowrap;
+    font-size: 40px;
+
+}
+
+.head {
+  padding-top: 100px;
+  padding-left: 30px;
+  transform: scale(1.4);
+}
+
+.screw {
+  padding-top: 52px;
+  padding-left: 40px;
+  transform: scale(2);
+}
+
+.vertical-line {
+  border-left: 3px dashed black;
+  height: 413px;
+  padding-left: 0px;
+}
