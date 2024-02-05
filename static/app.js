@@ -5,6 +5,7 @@ const button = document.getElementById('btn');
 
 let label_cut = "False"
 let label_rotation = "0"
+let label_size = "d12"
 /**
  * Load a template
  */
@@ -38,6 +39,11 @@ if (labelSelect) {
               else{
                 label_rotation = "0";
               }
+              if (wrapper.firstChild.hasAttribute('size')){
+                label_size = wrapper.firstChild.getAttribute('size');
+              }
+              else{
+                label_size = "d12";
               }
 
 
