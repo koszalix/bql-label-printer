@@ -1,4 +1,5 @@
 const labelSelect = document.getElementById('sel-label');
+const categorySelect = document.getElementById('sel-category');
 const wrapper = document.getElementById('wrapper');
 const form = document.getElementById('form');
 const button = document.getElementById('btn');
@@ -6,12 +7,24 @@ const button = document.getElementById('btn');
 let label_cut = "False"
 let label_rotation = "0"
 let label_size = "d12"
+
+/**
+ * Load selected category 
+ */
+if (categorySelect) {
+  categorySelect.onchange = function loadCategory() {
+      window.location.replace("reload?category=" + categorySelect.value);
+  }
+}
+
+
 /**
  * Load a template
  */
 if (labelSelect) {
     labelSelect.onchange = function loadTemplate() {
-        fetch('/static/labels/' + labelSelect.value + '.html')
+        
+        fetch('/static/labels/' + categorySelect.value + "/" + labelSelect.value + '.html')
             .then(function (response) {
                 if (response.ok) {
                     return response.text();
