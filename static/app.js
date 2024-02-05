@@ -3,6 +3,8 @@ const wrapper = document.getElementById('wrapper');
 const form = document.getElementById('form');
 const button = document.getElementById('btn');
 
+let label_cut = "False"
+let label_rotation = "0"
 /**
  * Load a template
  */
@@ -25,16 +27,17 @@ if (labelSelect) {
                 }
 
               if (wrapper.firstChild.hasAttribute('cut')) {
-                  wrapper.style.cut = wrapper.firstChild.getAttribute('cut');
+                  label_cut = wrapper.firstChild.getAttribute('cut');
               }else {
-                wrapper.style.cut = "False";
+                label_cut = "False";
               }
 
               if (wrapper.firstChild.hasAttribute('rotation')){
-                wrapper.style.rotation = wrapper.firstChild.getAttribute('rotation');
+                label_rotation = wrapper.firstChild.getAttribute('rotation');
               }
               else{
-                wrapper.style.rotation = "0";
+                label_rotation = "0";
+              }
               }
 
 
@@ -97,17 +100,15 @@ function buildQR() {
  * @return {string}
  */
 function getSize() {
-    if(labelSelect) {
-        return labelSelect.value.split('_')[0];
-    } else {
-        return FIXEDSIZE; // custom interfaces can set a global fixed size
-    }
+  return label_size;   
 }
+
+
 
 /**
  * Print the label
  */
-button.onclick = function () {
+document.getElementById("btn").onclick = function () {
     //const node = document.getElementById('label');
     const node = wrapper.querySelector(':first-child');
     console.log(node);
@@ -116,8 +117,8 @@ button.onclick = function () {
             const fd = new FormData();
             fd.append('data', blob);
             fd.append('size', getSize());
-            fd.append('rotate', wrapper.style.rotation);
-            fd.append('cut', wrapper.style.cut);
+            fd.append('rotate', label_rotation);
+            fd.append('cut', label_cut);
 
             return fetch('/print', {
                 method: 'POST',
