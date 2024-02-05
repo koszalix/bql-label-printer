@@ -10,6 +10,17 @@
 <main>
     <section class="template">
         <form>
+            <label for="sel-category">Category:
+                <select id="sel-category" name="category">
+                    {% for category in categories %}
+                        <option>{{ category }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </form>
+    </section>
+    <section class="template">
+        <form>
             <label for="sel-label">Label:
                 <select id="sel-label" name="labels">
                     {% for label in labels %}
@@ -19,7 +30,6 @@
             </label>
         </form>
     </section>
-
     <section class="form">
         <form id="form">
         </form>
