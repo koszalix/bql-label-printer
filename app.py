@@ -32,7 +32,9 @@ def do_editor():
     The main editor view
     :return:
     """
-    return render_template("index.html", labels=get_labels())
+    return render_template(
+        "index.html", categories=get_categories(), labels=get_labels("generic")
+    )
 
 
 @app.route("/expiry")
@@ -71,14 +73,42 @@ def do_print():
     return "ok"
 
 
-def get_labels():
+@app.route("/reload", methods=["GET"])
+def reload_labels():
+    """
+    Reload labels from selected category
+    :return
+    """
+    categories = get_categories()
+    categories.remove(request.args.get("category"))
+    categories = [request.args.get("category")] + categories
+    return render_template(
+        "index.html",
+        categories=categories,
+        labels=get_labels(request.args.get("category")),
+    )
+
+
+def get_labels(category: str):
     """
     List the available label templates
     :return:
     """
-    filenames = glob(sys.path[0] + "/static/labels/*.html")
+    filenames = glob(sys.path[0] + f"/static/labels/{category}/*.html")
     filenames.sort()
+
     return [basename(x[:-5]) for x in filenames]
+
+
+def get_categories():
+    """
+    List all categories
+    return:
+    """
+    filenames = glob(sys.path[0] + "/static/labels/*")
+    filenames.sort()
+
+    return [basename(x) for x in filenames if x[0] != "."]
 
 
 def main():
