@@ -1,0 +1,23 @@
+<head>
+    <title>Label Printer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='sakura.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" type="text/css"/>
+<body>
+ 
+  <div class="topnav">
+    <a href="reload?category=generic">Labels</a>
+    <a href="cable-flag">Cable Flag</a>
+  </div> 
+  <main>
+<div class="single center" style="height:91px; font-size: 75px;">
+        <span class="input">Mnth</span>
+    </div>
+    <div class="single center" style="height:111px; font-size: 90px; font-weight: bold;">
+        <span class="input">Year</span>
+    </div>
+  </main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
