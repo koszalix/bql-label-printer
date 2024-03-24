@@ -136,7 +136,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+*.venv*
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -414,4 +414,4 @@ tags
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/python,flask,vim,pycharm,visualstudiocode
-
+*.idea
