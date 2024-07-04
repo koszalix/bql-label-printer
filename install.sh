@@ -2,19 +2,20 @@
 
 CWD=$(pwd)
 
-sudo adduser $USER lp
-sudo apt install python3
-sudo apt install python3.11-venv
+mkdir -p /usr/bin/bql-label-printer
+apt install python3
+apt install python3.11-venv
+
+cp -r . /usr/bin/bql-label-printer
+
+cd /usr/bin/bql-label-printer || exit 
 
 python3 -m venv .env 
 source .env/bin/activate
 pip install -r requirements.txt 
 
-sed -i "s/user/${USER}/" bql-label-printer.service 
-sed -i "s|pwd|$CWD|g" bql-label-printer.service 
+cp bql.service /etc/systemd/system/bql.service
 
-
-sudo cp bql-label-printer.service /etc/systemd/system/bql.service
-
-sudo systemctl start bql 
+systemctl enable bql
+systemctl start bql 
 
