@@ -1,0 +1,13 @@
+[Unit]
+Description=Brother Label Printer UI
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/bin/bql-label-printer
+ExecStart=/usr/bin/bql-label-printer/.env/bin/python app.py --config-file /etc/bql-label-printer/bql.yml  
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
