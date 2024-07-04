@@ -5,8 +5,8 @@ After=syslog.target network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/usr/bin/bql-label-printer
-ExecStart=/usr/bin/bql-label-printer/.env/bin/python app.py --config-file /etc/bql-label-printer/bql.yml  
+WorkingDirectory=/opt/bql-label-printer
+ExecStart=/opt/bql-label-printer/.env/bin/python app.py --config-file /etc/bql-label-printer/bql.yml  
 Restart=on-abort
 
 [Install]
