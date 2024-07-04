@@ -2,7 +2,7 @@
 
 This is a very simple web interface to create text labels on a Brother QL series label printers supported by [pklaus/brother_ql](https://github.com/pklaus/brother_ql).
 
-# Installation
+## Installation
 
 To install this tool run
 
@@ -14,35 +14,40 @@ cd bql-label-printer
 
 This script need root privileges to run.
 
-# 
+## Configuration file
 
+The software configuration is stored in `/etc/bql-label-printer/bql.yml`, configuration file
+is yaml.
 
+**Backend**
 
+To configure printer backend edit the `backend` section, see [brother-ql](https://pypi.org/project/brother-ql/) documentation.
 
+```
+backend:
+  printer: #specify printer addres
+  model: #specify printer models
+```
 
+**Server**
 
+To configure server itself (ip address port etc) edit the `server` section
 
-
-
-
-
-
-
-
-
-
-
-
-## Using
-
-Open your browser on the shown URL (defaults to `http://127.0.0.1:8013/`). The application uses modern JavaScript (promises, blobs, etc) and requires a modern browser. It was tested with Chrome only, but probably works in Firefox, too.
+```
+server:
+  host: # server ip addr, use "0.0.0.0" for  all ips
+  port: # service port
+  debug: # enable debug
+```
 
 ## Label Templates
 
-Labels are based on HTML templates located in the `static/labels/` directory. Templates need to start with a supported label size followed by an underscore. See [pklaus/brother_ql](https://github.com/pklaus/brother_ql) for a list of supported sizes.
+Labels are based on HTML templates located in the `/opt/bql-labels/static/labels/` directory. 
+Templates need to start with a supported label size followed by an underscore.
+See [pklaus/brother_ql](https://github.com/pklaus/brother_ql) for a list of supported sizes.
 
-The templates need to contain exactly one root element, specifying the exact size of the label in pixels (again, check the above site for proper values).
-
+The templates need to contain exactly one root element, 
+specifying the exact size of the label in pixels (again, check the above site for proper values).
 Elements containing an `input` class can be edited through the form.
 
 Divs with the `qrcode` class will be converted to a QR Code. They also need the `input` class and a `data-value` attribute instead of an inner text.
@@ -50,9 +55,6 @@ Divs with the `qrcode` class will be converted to a QR Code. They also need the 
 To enable auto cut for label set `cut` to `True` in  main `<div>` of label definition. 
 
 To enable rotation set `rotation` to specific angle (range from 0 to 360) in main `<div>` of label definition.
-
-
-
 
 ## Feedback
 
