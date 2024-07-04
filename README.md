@@ -16,6 +16,8 @@ cd bql-label-printer
 
 This script need root privileges to run.
 
+The bql-label-printer is installed as as service named `bql`.
+
 ## Configuration file
 
 The software configuration is stored in `/etc/bql-label-printer/bql.yml`, configuration file
@@ -58,8 +60,8 @@ static/labels
     bigbox.html
     smallbox.html
   jar
-   whiskey.html
-   in.html
+    whiskey.html
+    in.html
 ```
 
 The templates need to contain exactly one root element, 
@@ -73,6 +75,12 @@ To enable auto cut for label set `cut` to `True` in  main `<div>` of label defin
 To enable rotation set `rotation` to specific angle (range from 0 to 360) in main `<div>` of label definition.
 
 ## Labels Libraries
+
+Originally the labels were located in the `bql-label-printer` repository, but to make code clean I've decided
+to split labels libraries and source code. 
+
+See [source repository labels](https://github.com/splitbrain/bql-label-printer/tree/master/static/labels)
+installation of labels is described in chapter above.
 
 ## Feedback
 
