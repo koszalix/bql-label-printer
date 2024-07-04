@@ -2,21 +2,36 @@
 
 This is a very simple web interface to create text labels on a Brother QL series label printers supported by [pklaus/brother_ql](https://github.com/pklaus/brother_ql).
 
-## Installation
+# Installation
 
-Create a virtual environment and install the requirements
+To install this tool run
 
-    $> virtualenv3 env
-    $> . env/bin/activate
-    $env> pip install -r requirements.txt
+```
+git clone https://github.com/koszalix/bql-label-printer.git
+cd bql-label-printer
+./install.sh
+```
 
-## Running
+This script need root privileges to run.
 
-Start the server by providing the model and connection string
+# 
 
-    $env> ./app.py --model QL-500 tcp://192.168.1.1:9100
 
-Run `app.py -h` for more info.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Using
 
@@ -36,16 +51,6 @@ To enable auto cut for label set `cut` to `True` in  main `<div>` of label defin
 
 To enable rotation set `rotation` to specific angle (range from 0 to 360) in main `<div>` of label definition.
 
-## Using config file 
-Instead of using parameter provided by command line, parameters can be provided from config file. 
-
-## Installation 
-
-To install the `bql-label-printer` use following commands:
-```bash
-chmod +x install.sh 
-./install.sh
-```
 
 
 
@@ -61,3 +66,4 @@ Many thanks to the following projects:
 * [1904labs/dom-to-image-more](https://github.com/1904labs/dom-to-image-more)
 * [oxalorg/sakura](https://github.com/oxalorg/sakura)
 * [KeeeX/qrcodejs](https://github.com/KeeeX/qrcodejs)
+* [splitbrain](https://github.com/splitbrain/bql-label-printer)
