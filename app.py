@@ -55,14 +55,17 @@ def do_print():
     im = Image.open(request.files["data"])
     qlr = BrotherQLRaster(MODEL)
     print(request.form)
-    create_label(
-        qlr,
-        im,
-        request.form["size"],
-        threshold=70,
-        cut=bool(request.form["cut"]),
-        rotate=int(request.form["rotate"]),
-    )
+    try:
+        create_label(
+                qlr,
+                im,
+                request.form["size"],
+                threshold=70,
+                cut=bool(request.form["cut"]),
+                rotate=int(request.form["rotate"]),
+         )
+    except ValueError:
+        return "Bad image"
 
     # noinspection PyCallingNonCallable
     be = BACKEND_CLASS(BACKEND_STRING_DESCR)
